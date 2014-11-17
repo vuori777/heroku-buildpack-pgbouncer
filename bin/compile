@@ -66,6 +66,11 @@ mkdir -p "$BUILD_DIR/$VENDORED_STUNNEL"
 mkdir -p "$BUILD_DIR/$VENDORED_STUNNEL/var/run/stunnel"
 package_download "stunnel" "${STUNNEL_VERSION}" "${BUILD_DIR}/${VENDORED_STUNNEL}" "${STACK}"
 
+echo "-----> Moving the python start script into app/bin"
+mkdir -p $BUILD_DIR/vendor
+cp -ar "$BUILDPACK_DIR/start-pgbouncer-stunnel" $BUILD_DIR/vendor/
+chmod +x $BUILD_DIR/vendor/start-pgbouncer-stunnel
+
 echo "-----> Moving the configuration generation script into app/bin"
 mkdir -p $BUILD_DIR/bin
 cp "$BUILDPACK_DIR/bin/gen-pgbouncer-conf.sh" $BUILD_DIR/bin
