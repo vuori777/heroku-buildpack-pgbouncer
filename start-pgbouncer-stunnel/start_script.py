@@ -9,6 +9,8 @@ import sys
 import time
 import pg8000
 import os
+import hashlib
+
 from jinja2 import Environment, FileSystemLoader
 try:
     import urlparse
@@ -82,6 +84,9 @@ def parse_url(url, color, index):
     path = url.path[1:]
     path = path.split('?', 2)[0]
 
+    # Generate md5sum of password
+    md5pass = hashlib.md5("{}{}".format(url.password, url.username)).hexdigest()
+
     # Handle postgres percent-encoded paths.
     hostname = url.hostname or ''
     if '%2f' in hostname.lower():
@@ -95,6 +100,7 @@ def parse_url(url, color, index):
         'host': hostname,
         'port': url.port or '',
         'color': color,
+        'md5pass': 'md5{}'.format(md5pass),
         'client_name': "db{}".format(index),
         })
 
