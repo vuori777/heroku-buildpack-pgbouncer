@@ -103,6 +103,7 @@ def parse_url(url, color, index):
         'color': color,
         'md5pass': 'md5{}'.format(md5pass),
         'client_name': "db{}".format(index),
+        'client_port': "610{}".format(index),
         })
 
     return config
