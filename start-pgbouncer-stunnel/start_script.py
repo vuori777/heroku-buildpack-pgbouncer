@@ -64,7 +64,7 @@ def parse_options(env={}):
         options['server_reset_query'] = ''
 
 
-    for idx, postgres_url in enumerate(options['postgres_urls'].split):
+    for idx, postgres_url in enumerate(options['postgres_urls'].split()):
         options[postgres_url] = parse_url(postgres_url, color=postgres_url, index=idx)
         print options[postgres_url]
 
