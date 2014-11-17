@@ -28,7 +28,7 @@ def main():
     generate_config()
 
 def generate_config():
-    options = parse_options(os.environ())
+    options = parse_options(os.environ)
     render_file('pgbouncer.ini', options, '/app/vendor/pgbouncer/')
     render_file('stunnel.conf', options, '/app/vendor/stunnel/')
     render_file('users.txt', options, '/app/vendor/pgbouncer/')
