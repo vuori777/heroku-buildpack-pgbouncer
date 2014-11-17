@@ -1,0 +1,3 @@
+{% for database in databases %}
+"{{ database['user'] }}" "{{ database['md5pass'] }}"
+{% endfor %}
