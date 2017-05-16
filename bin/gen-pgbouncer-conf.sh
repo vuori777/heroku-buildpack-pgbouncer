@@ -84,6 +84,7 @@ protocol = pgsql
 accept  = /tmp/.s.PGSQL.610${n}
 connect = $DB_HOST:$DB_PORT
 retry = ${PGBOUNCER_CONNECTION_RETRY:-"no"}
+connect_query = ${PGBOUNCER_CONNECT_QUERY}
 EOFEOF
 
   cat >> /app/vendor/pgbouncer/users.txt << EOFEOF
