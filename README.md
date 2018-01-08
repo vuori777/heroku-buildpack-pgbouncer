@@ -1,6 +1,10 @@
-# Heroku buildpack: pgbouncer
+# Heroku buildpack: pgbouncer (hold the stunnel)
 
-*This fork eliminates stunnel from the original buildpack.*
+*This fork eliminates stunnel from the original buildpack and makes timeouts
+failover-friendly.* When using Amazon Aurora or similar DNS-failover-based cluster
+setups, stunnel keeps hanging on to old connections and DNS results which
+leads to huge fail. Using pgbouncer's native TLS support allows granular control
+of connection lifetimes.
 
 This is a [Heroku buildpack](http://devcenter.heroku.com/articles/buildpacks) that
 allows one to run pgbouncer in a dyno alongside application code.
